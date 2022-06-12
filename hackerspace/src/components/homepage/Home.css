@@ -1,0 +1,19 @@
+.Feed {
+    max-width: 1024px;
+    background-color: red;
+}
+
+.post-wrapper {
+    max-width: 1024px;
+    margin: 0 auto;
+    padding: 8px;
+    margin-top: 32px;
+    border-radius: 4px;
+    background-color: red;
+}
+
+.post__img-wrapper {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    background-color: #ccc;
+}

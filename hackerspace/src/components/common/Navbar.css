@@ -1,0 +1,28 @@
+.navbar {
+    position: fixed;
+    right: 18px;
+    top: 18px;
+}
+
+.navbar-list {
+    list-style: none;
+}
+
+.navbar-item {
+    margin-top: 128px;
+    padding: 8px;
+    transform: rotate(90deg);
+    transition: 0.2s;
+}
+
+.navbar-link {
+    display: block;
+    text-decoration: none;
+    color: black;
+    transition: 0.2s;
+}
+
+.navbar-link:hover {
+    cursor: pointer;
+    
+}
