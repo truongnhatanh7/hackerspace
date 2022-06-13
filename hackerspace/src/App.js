@@ -5,7 +5,9 @@ import Message from './components/message/Message'
 import Profile from './components/profile/Profile'
 import Auth from './components/auth/Auth'
 import Register from './components/register/Register'
+import Editor from './components/editor/Editor'
 import { getAuth } from 'firebase/auth'
+
 
 import {
   Routes,
@@ -31,6 +33,9 @@ function App() {
           </Route>
           
           <Route path="/register" element={<Register />}>
+          </Route>
+
+          <Route path="/editor" element={<Editor />}>
           </Route>
     </Routes>
 

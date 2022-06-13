@@ -31,7 +31,6 @@ export default function Auth() {
                 <input type="password" ref={password} />
                 <button className="sign-in-btn" onClick={handleSignIn}>Sign in</button>
             </div>
-
         </>
     )
 }
