@@ -5,23 +5,18 @@ import Message from './components/message/Message'
 import Profile from './components/profile/Profile'
 import Auth from './components/auth/Auth'
 import Register from './components/register/Register'
-
-
+import { getAuth } from 'firebase/auth'
 
 import {
-  BrowserRouter as Router,
   Routes,
   Route,
-  Link
 } from "react-router-dom";
 
 
 
 function App() {
-  return (
 
-
-        
+  return (    
     <Routes>
           <Route path="/" element={<Home />}>
           </Route>

@@ -8,7 +8,6 @@ export default function Auth() {
     const email = useRef()
     const password = useRef()
     function handleSignIn() {
-        console.log("trigger");
         const auth = getAuth();
         signInWithEmailAndPassword(auth, email.current.value, password.current.value)
             .then((userCredential) => {
