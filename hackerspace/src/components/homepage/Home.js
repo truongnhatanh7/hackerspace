@@ -1,3 +1,4 @@
+import React from 'react';
 import Navbar from '../common/Navbar'
 import Feed from './Feed'
 import './Home.css'
