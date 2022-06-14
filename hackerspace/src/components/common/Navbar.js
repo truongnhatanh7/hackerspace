@@ -24,6 +24,12 @@ export default function Navbar() {
                         Message
                         </Link>
                     </li>
+
+                    <li className="navbar-item">
+                        <Link className="navbar-link" to="/editor">
+                        Post
+                        </Link>
+                    </li>
                 </ul>
             </nav>
         </>

@@ -1,19 +1,21 @@
 .Feed {
     max-width: 1024px;
-    background-color: red;
+    /* background-color: red; */
 }
 
 .post-wrapper {
     max-width: 1024px;
     margin: 0 auto;
-    padding: 8px;
+    padding: 18px;
     margin-top: 32px;
     border-radius: 4px;
-    background-color: red;
+    /* background-color: red; */
+    background-color: rgb(229, 221, 194);
+
 }
 
 .post__img-wrapper {
     width: 100%;
     aspect-ratio: 1 / 1;
-    background-color: #ccc;
+    background-color: rgba(227, 205, 194, 0.51);
 }
