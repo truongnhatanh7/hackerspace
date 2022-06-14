@@ -1,6 +1,7 @@
 .Feed {
     max-width: 1024px;
     /* background-color: red; */
+    margin: 0 auto;
 }
 
 .post-wrapper {
