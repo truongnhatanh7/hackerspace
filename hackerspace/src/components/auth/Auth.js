@@ -1,19 +1,23 @@
 import React from 'react';
 import app from '../../firebase.config'
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
+import { getAuth, setPersistence, signInWithEmailAndPassword, browserSessionPersistence } from 'firebase/auth'
 import { useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
+import './Auth.css'
 export default function Auth() {
     let navigate = useNavigate()
     const email = useRef()
     const password = useRef()
     function handleSignIn() {
         const auth = getAuth();
-        signInWithEmailAndPassword(auth, email.current.value, password.current.value)
-            .then((userCredential) => {
-                const user = userCredential.user
-                console.log(user)
-                navigate('/')
+        setPersistence(auth, browserSessionPersistence)
+            .then(() => {
+                signInWithEmailAndPassword(auth, email.current.value, password.current.value)
+                    .then((userCredential) => {
+                        const user = userCredential.user
+                        console.log(user)
+                        navigate('/')
+                    })
             })
             .catch(error => {
                 const errorCode = error.code
@@ -25,10 +29,10 @@ export default function Auth() {
     return (
         <>
             <div className="sign-in-wrapper">
-                <label className="auth-lable">Email</label>
+                <label className="auth-label">Email</label>
                 <input type="email" className="auth-input" ref={email} />
-                <label className="auth-password" >Password</label>
-                <input type="password" ref={password} />
+                <label className="auth-label" >Password</label>
+                <input type="password" className="auth-input" ref={password} />
                 <button className="sign-in-btn" onClick={handleSignIn}>Sign in</button>
             </div>
         </>

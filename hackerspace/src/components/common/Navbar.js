@@ -8,19 +8,19 @@ export default function Navbar() {
             <nav className="navbar">
                 <ul className="navbar-list">
                     <li className="navbar-item">
-                        <Link to="/">
+                        <Link className="navbar-link" to="/">
                         Home
                         </Link>
                         
                     </li>
                     <li className="navbar-item">
-                        <Link to="/profile">
+                        <Link className="navbar-link" to="/profile">
                         Profile
 
                         </Link>
                     </li>
                     <li className="navbar-item">
-                        <Link to="/message">
+                        <Link className="navbar-link" to="/message">
                         Message
                         </Link>
                     </li>
