@@ -5,6 +5,7 @@ import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
 import { app } from '../../firebase.config'
+import { LazyLoadImage } from 'react-lazy-load-image-component'
 export default function Post(props) {
     let image = useRef()
     const storage = getStorage(app)
@@ -32,7 +33,8 @@ export default function Post(props) {
                 {props.data.content}
             </div>
             <div className="post-img-wrapper" ref={image}>
-                {imgUrl != "" ? <img className="post-img" src={imgUrl}/> : ""}
+                
+                {imgUrl != "" ? <LazyLoadImage className="post-img" src={imgUrl} loading="lazy"/> : ""}
             </div>
         </div>
     )

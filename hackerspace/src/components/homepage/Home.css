@@ -1,11 +1,12 @@
 .Feed {
-    max-width: 1024px;
+    max-width: 860px;
     /* background-color: red; */
     margin: 0 auto;
+    padding: 1rem;
 }
 
 .post-wrapper {
-    max-width: 1024px;
+    max-width: 860px;
     margin: 0 auto;
     padding: 18px;
     margin-top: 32px;
