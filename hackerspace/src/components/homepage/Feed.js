@@ -25,16 +25,12 @@ export default function Feed(props) {
         (async () => {
             try {
                 const ref = collection(db, "posts")
-                // const querySnapshot = await getDocs(ref);
                 const q = query(ref, orderBy("createdDate", "desc"));
                 const queriedDoc = await getDocs(q);
                 let tempList = []
-                console.log("yasuo");
                 queriedDoc.forEach(doc => {
-                    // console.log(doc.data())
-                    tempList.push(doc.data())
+                    tempList.push({...doc.data(), id: doc.id})
                 })
-
                 setPosts(tempList)
             } catch (e) {
                 console.log(e)
@@ -48,7 +44,7 @@ export default function Feed(props) {
         <div className="Feed">
             {posts.length != 0 ? posts.map((post, index) => {
                 return <Post data={post} key={index} />
-            }) : <Skeleton className="post-wrapper" baseColor='rgb(243, 240, 231)' count={10}/>}
+            }) : <Skeleton className="post-wrapper" baseColor='rgb(243, 240, 231)' count={20}/>}
         </div>
     )
 }

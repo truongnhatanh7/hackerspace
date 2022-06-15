@@ -15,10 +15,16 @@
 
 }
 
-.post-img {
+.post-img-wrapper {
     width: 100%;
-    /* aspect-ratio: 1 / 1; */
-    background-color: rgba(227, 205, 194, 0.51);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-top: 32px;
+}
+
+.post-img {
+    width: 100% !important;
+    border-radius: 4px;
 }
 
 .post-timestamp {
