@@ -20,9 +20,9 @@ export default function Editor() {
         console.log(content.current.value)
         try {
             const docRef = await addDoc(collection(db, "posts"), {
-                content: content.current.value
+                content: content.current.value,
+                createdDate: new Date().getTime()
             });
-            // console.log("Document written with ID: ", docRef.id);
             
             navigate("/")
 

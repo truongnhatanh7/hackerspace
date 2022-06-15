@@ -2,7 +2,7 @@ import React from 'react';
 
 import { app, db } from '../../firebase.config'
 import { getAuth } from 'firebase/auth'
-import { collection, getDocs } from "firebase/firestore"; 
+import { collection, getDocs, query, orderBy, startAt } from "firebase/firestore"; 
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Post from './Post'
@@ -17,18 +17,24 @@ export default function Feed(props) {
     let navigate = useNavigate()
     let [posts, setPosts] = useState([])
 
-    useEffect(() => {
-        console.log(getAuth())
-    }, [])
+    // useEffect(() => {
+    //     console.log(getAuth())
+    // }, [])
 
     useEffect(() => {
         (async () => {
             try {
-                const querySnapshot = await getDocs(collection(db, "posts"));
+                const ref = collection(db, "posts")
+                // const querySnapshot = await getDocs(ref);
+                const q = query(ref, orderBy("createdDate", "desc"));
+                const queriedDoc = await getDocs(q);
                 let tempList = []
-                querySnapshot.forEach((doc) => {
+                console.log("yasuo");
+                queriedDoc.forEach(doc => {
+                    // console.log(doc.data())
                     tempList.push(doc.data())
                 })
+
                 setPosts(tempList)
             } catch (e) {
                 console.log(e)
@@ -40,10 +46,9 @@ export default function Feed(props) {
 
     return (
         <div className="Feed">
-
             {posts.length != 0 ? posts.map((post, index) => {
                 return <Post data={post} key={index} />
-            }) : <Skeleton className="post-wrapper" baseColor='rgb(229, 221, 194)' count={10}/>}
+            }) : <Skeleton className="post-wrapper" baseColor='rgb(243, 240, 231)' count={10}/>}
         </div>
     )
 }

@@ -11,12 +11,21 @@
     margin-top: 32px;
     border-radius: 4px;
     /* background-color: red; */
-    background-color: rgb(229, 221, 194);
+    background-color: rgb(243, 240, 231);
 
 }
 
-.post__img-wrapper {
+.post-img {
     width: 100%;
-    aspect-ratio: 1 / 1;
+    /* aspect-ratio: 1 / 1; */
     background-color: rgba(227, 205, 194, 0.51);
+}
+
+.post-timestamp {
+    font-size: 12px;
+    color: rgb(82, 82, 82);
+}
+
+.post-content {
+    margin-top: 12px;
 }
