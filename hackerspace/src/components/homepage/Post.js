@@ -25,9 +25,17 @@ export default function Post(props) {
 
     return (
         <div className="post-wrapper">
-
-            <div className="post-timestamp">
-                {new Date(props.data.createdDate).toString()}
+            
+            <div className="post-header">
+                <div className="post-avatar-wrapper">
+                    <img src={props.data.creatorPhoto} className="post-avatar" />
+                </div>
+                <div className="post-info">
+                    <p className="post-creator">{props.data.creatorName}</p>
+                    <p className="post-time-stamp">
+                        {new Date(props.data.createdDate).toString()}
+                    </p>
+                </div>
             </div>
             <div className="post-content">
                 {props.data.content}

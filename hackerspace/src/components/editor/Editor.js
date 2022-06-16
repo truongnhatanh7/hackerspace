@@ -43,7 +43,9 @@ export default function Editor() {
             const docRef = await addDoc(collection(db, "posts"), {
                 content: content.current.value,
                 createdDate: new Date().getTime(),
-                imgRef: imgRef
+                imgRef: imgRef,
+                creatorName: getAuth().currentUser.displayName,
+                creatorPhoto: getAuth().currentUser.photoURL
             });
 
             navigate("/")
