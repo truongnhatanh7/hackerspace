@@ -10,7 +10,10 @@ import Bubble from './Bubble'
 import './Message.css'
 export default function Message() {
     let navigate = useNavigate()
+
     let messageRef = useRef();
+    let chatWrapperRef = useRef();
+    let lastMessageRef = useRef();
     let [messages, setMessages] = useState([]);
     console.log(messages)
 
@@ -21,6 +24,12 @@ export default function Message() {
         }
         renderMessages()
     }, [])
+
+    useEffect(() => {
+        // chatWrapperRef.current.scrollIntoView()
+        lastMessageRef.current.scrollIntoView()
+
+    }, [messages])
 
     async function handleSendMessage() {
         try {
@@ -64,10 +73,11 @@ export default function Message() {
         <Navbar />
         <div className="chat-wrapper">
             <h1 className="">Message</h1>
-            <div className="chat-content">
-                {messages.map(message => {
-                    return <Bubble data={message} key={message.id} />
+            <div className="chat-content" ref={chatWrapperRef}>
+                {messages.map((message) => {
+                    return <Bubble data={message} key={message.id}/>
                 })}
+                <div className="chat-bottom-scroll" ref={lastMessageRef}></div>
             </div>
             <div className="chat-input-wrapper">
                 <textarea className="chat-input-content" ref={messageRef}></textarea>
