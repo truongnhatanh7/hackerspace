@@ -2,7 +2,8 @@
 
 hackerspace is a social network web app for developers.
 Users can register, log in, upload posts with image, auto generated avatar, send messages to group chat.
-(./feed.png)
+</br>
+![Feed](./feed.png)
 ## How to run
 Config firebase.config.js with your Firebase's API Key, then:
 ```bash
