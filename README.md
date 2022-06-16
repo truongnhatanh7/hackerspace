@@ -5,7 +5,7 @@ Users can register, log in, upload posts with image, auto generated avatar, send
 </br>
 ![Profile](./profile.png)
 ![Feed](./feed.png)
-![Message](./message.png)
+![Message](./chat.png)
 ## How to run
 Config firebase.config.js with your Firebase's API Key, then:
 ```bash
