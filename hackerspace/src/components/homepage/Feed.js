@@ -17,10 +17,6 @@ export default function Feed(props) {
     let navigate = useNavigate()
     let [posts, setPosts] = useState([])
 
-    // useEffect(() => {
-    //     console.log(getAuth())
-    // }, [])
-
     useEffect(() => {
         (async () => {
             try {
