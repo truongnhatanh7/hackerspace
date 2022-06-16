@@ -1,6 +1,11 @@
 import './Navbar.css';
 import React from 'react';
 import { Link } from 'react-router-dom'
+import { BiHomeCircle, 
+    BiMessage,
+    BiUser,
+    BiPlus
+} from "react-icons/bi";
 
 export default function Navbar() {
     return (
@@ -9,25 +14,25 @@ export default function Navbar() {
                 <ul className="navbar-list">
                     <li className="navbar-item">
                         <Link className="navbar-link" to="/">
-                        Home
+                        <BiHomeCircle className="navbar-icon"/>
                         </Link>
                         
                     </li>
                     <li className="navbar-item">
                         <Link className="navbar-link" to="/profile">
-                        Profile
 
+                        <BiUser className="navbar-icon"/>
                         </Link>
                     </li>
                     <li className="navbar-item">
                         <Link className="navbar-link" to="/message">
-                        Message
+                        <BiMessage className="navbar-icon"/>
                         </Link>
                     </li>
 
                     <li className="navbar-item">
                         <Link className="navbar-link" to="/editor">
-                        Post
+                        <BiPlus className="navbar-icon"/>
                         </Link>
                     </li>
                 </ul>

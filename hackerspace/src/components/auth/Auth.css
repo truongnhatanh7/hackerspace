@@ -14,34 +14,14 @@ body {
     border-radius: 18px;
     background: linear-gradient(225deg, #f3f3f3, #cccccc);
     box-shadow:  -13px 13px 55px #bababa,
-                 13px -13px 55px #ffffff;
+                13px -13px 55px #ffffff;
 }
 
-.auth-label {
-    margin-top: 12px;
-}
-
-.auth-input {
-    border: none;
-    border-radius: 8px;
-    background: transparent;
-    box-shadow:  28px -28px 56px #e3e3e3,
-                 -28px 28px 56px #f7f7f7;
-    padding: 12px;
-    margin-top: 8px;
-    outline: none;
+.register-link {
+    margin-top: 18px;
+    color: rgb(219, 180, 61);
 }
 
 .sign-in-btn {
-    margin-top: 32px;
-    border: none;
-    padding: 18px;
-    font-size: 18px;
-    border-radius: 8px;
-    transition: 0.2s;
-}
-
-.sign-in-btn:hover {
-    cursor: pointer;
-    transform: scale(1.03);
+    margin-top: 18px !important;
 }

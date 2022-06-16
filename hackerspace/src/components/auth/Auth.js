@@ -3,6 +3,7 @@ import app from '../../firebase.config'
 import { getAuth, setPersistence, signInWithEmailAndPassword, browserSessionPersistence } from 'firebase/auth'
 import { useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import './Auth.css'
 export default function Auth() {
     let navigate = useNavigate()
@@ -33,6 +34,7 @@ export default function Auth() {
                 <input type="email" className="auth-input" ref={email} />
                 <label className="auth-label" >Password</label>
                 <input type="password" className="auth-input" ref={password} />
+                <Link to="/register" className="register-link">Create new account</Link>
                 <button className="sign-in-btn" onClick={handleSignIn}>Sign in</button>
             </div>
         </>

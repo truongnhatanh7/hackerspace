@@ -1,0 +1,28 @@
+.auth-label {
+    margin-top: 12px !important;
+}
+
+.auth-input {
+    border: none;
+    border-radius: 8px;
+    background: transparent;
+    box-shadow:  28px -28px 56px #e3e3e3,
+                -28px 28px 56px #f7f7f7;
+    padding: 12px;
+    margin-top: 8px;
+
+}
+
+.sign-in-btn {
+    margin-top: 32px;
+    border: none;
+    padding: 18px;
+    font-size: 18px;
+    border-radius: 8px;
+    transition: 0.2s;
+}
+
+.sign-in-btn:hover {
+    cursor: pointer;
+    transform: scale(1.03);
+}

@@ -6,15 +6,15 @@ import { getAuth } from "firebase/auth";
 import './Editor.css'
 import { useNavigate } from 'react-router-dom'
 import { getStorage, ref, uploadBytes } from 'firebase/storage'
+import Navbar from '../common/Navbar'
 import { v4 as uuidv4 } from 'uuid'
 
-let storagePath = "gs://hackerspace-e947d.appspot.com/"
+const storagePath = "gs://hackerspace-e947d.appspot.com/"
 
 export default function Editor() {
     let content = useRef()
     let file = useRef()
     let navigate = useNavigate()
-    // const storageRef = ref(storage, 'post-imgs')
 
     useEffect(() => {
         if (getAuth().currentUser === null) {
@@ -55,11 +55,14 @@ export default function Editor() {
     }
 
     return (
-        <div className="editor-wrapper">
-            <label className="editor-label">Content</label>
-            <textarea className="editor-content" ref={content}/>
-            <input type="file" className="editor-file" ref={file}/>
-            <button className="editor-submit" onClick={handlePost}>Post</button>
-        </div>
+        <>
+            <Navbar />
+            <div className="editor-wrapper">
+                <label className="editor-label">Content</label>
+                <textarea className="editor-content" ref={content}/>
+                <input type="file" className="editor-file" ref={file}/>
+                <button className="editor-submit" onClick={handlePost}>Post</button>
+            </div>
+        </>
     )
 }

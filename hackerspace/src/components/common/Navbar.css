@@ -9,9 +9,9 @@
 }
 
 .navbar-item {
-    margin-top: 128px;
+    margin-top: 12px;
     padding: 8px;
-    transform: rotate(90deg);
+    /* transform: rotate(90deg); */
     transition: 0.2s;
 }
 
@@ -25,4 +25,18 @@
 .navbar-link:hover {
     cursor: pointer;
     
+}
+
+.navbar-icon {
+    font-size: 32px;
+    transition: 0.2s;
+    padding: 18px;
+    background-color: rgb(106, 106, 106);
+    border-radius: 100%;
+    color: #fff;
+}
+
+.navbar-icon:hover {
+    transform: scale(1.08);
+
 }
