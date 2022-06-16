@@ -13,13 +13,15 @@
     border-radius: 4px;
     background-color: rgb(243, 240, 231);
 
+
 }
 
 .post-img-wrapper {
     width: 100%;
+    height: auto;
     border-radius: 4px;
     overflow: hidden;
-    margin-top: 32px;
+    margin-top: 24px;
 }
 
 .post-img {
@@ -36,7 +38,8 @@
 }
 
 .post-content {
-    margin-top: 12px;
+    margin-top: 18px;
+
 }
 
 .post-info {
