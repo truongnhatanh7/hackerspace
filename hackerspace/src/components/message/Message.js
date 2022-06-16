@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from 'react'
 import { app, db } from '../../firebase.config'
 import { getAuth } from 'firebase/auth'
 import { useNavigate } from 'react-router-dom'
-import { collection, getDocs, query, orderBy, startAt, addDoc } from "firebase/firestore"; 
+import { collection, getDocs, query, orderBy, limit, addDoc } from "firebase/firestore"; 
 import { v4 as uuidv4 } from 'uuid'
 import Navbar from '../common/Navbar'
 import Bubble from './Bubble'
@@ -15,6 +15,7 @@ export default function Message() {
     let chatWrapperRef = useRef();
     let lastMessageRef = useRef();
     let [messages, setMessages] = useState([]);
+    let [loadLimit, setLoadLimit] = useState(20);
     console.log(messages)
 
     useEffect(() => {
@@ -56,12 +57,13 @@ export default function Message() {
     async function renderMessages() {
         try {
             const ref = collection(db, "messages")
-            let q = query(ref, orderBy("timestamp", "asc"))
+            let q = query(ref, orderBy("timestamp", "desc"), limit(loadLimit))
             const queriedDoc = await getDocs(q)
             let tempMessages = []
             queriedDoc.forEach(doc => {
                 tempMessages.push(doc.data())
             })
+            tempMessages = tempMessages.reverse()
             setMessages(tempMessages)
         } catch (e) {
             console.log(e)
