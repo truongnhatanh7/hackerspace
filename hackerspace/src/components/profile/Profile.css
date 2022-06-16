@@ -6,7 +6,7 @@
     background-color: rgba(255, 255, 255, 0.5);
     padding: 32px;
     border-radius: 18px;
-    min-width: 860px;
+    min-width: 460px;
     display: flex;
     flex-direction: column;
 }
@@ -19,12 +19,13 @@
 
 .btn {
     margin-top: 8px;
-    width: 20%;
-    padding: 8px 18px;
+    width: 100%;
+    padding: 18px 18px;
     border: none;
     border-radius: 8px;
     transition: 0.2s;
     background-color: #ccc;
+    font-size: 18px;
     /* color: white; */
 }
 
@@ -35,4 +36,10 @@
 
 .profile-log-out {
     background-color: rgb(231, 83, 83);
+}
+
+.profile-avatar {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
 }

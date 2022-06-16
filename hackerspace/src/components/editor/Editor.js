@@ -24,7 +24,6 @@ export default function Editor() {
 
     async function handlePost() {
         try {
-            let haveImg = true
             let imgId = uuidv4()
             const storage = getStorage(app) 
             const storageRef = ref(storage, 'posts/' + imgId)

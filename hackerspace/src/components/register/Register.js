@@ -1,12 +1,12 @@
 import React from 'react';
 import { useRef, useState, useEffect } from 'react'
-import { addDoc, collection } from "firebase/firestore";
-import { app, db } from '../../firebase.config'
+import { app } from '../../firebase.config'
 import { getAuth, createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
-import { getStorage, ref, uploadBytes } from 'firebase/storage'
+import { getDownloadURL, getStorage, ref, uploadBytes } from 'firebase/storage'
 import { getRandomAvatar } from "@fractalsoftware/random-avatar-generator";
 import '../common/Form.css'
 import './Register.css'
+import { useNavigate } from 'react-router-dom'
 import { v4 as uuidv4 } from 'uuid'
 
 const storagePath = "gs://hackerspace-e947d.appspot.com/"
@@ -16,20 +16,17 @@ export default function Register() {
     const email = useRef()
     const password = useRef()
     const name = useRef()
-
+    let navigate = useNavigate()
     
 
     function handleRegister() {
-        console.log("Register info: ", email.current.value, password.current.value)
+        // console.log("Register info: ", email.current.value, password.current.value)
         const auth = getAuth()
         createUserWithEmailAndPassword(auth, email.current.value, password.current.value)
             .then(userCredential => {
                 uploadDefaultAvatar()
-                updateProfile(getAuth().currentUser, {
-                    displayName: name.current.value
-                })
-
             })
+
             .catch(error => {
                 const errorCode = error.code
                 const errorMessage = error.message
@@ -47,8 +44,26 @@ export default function Register() {
 
         uploadBytes(storageRef, randomAvatar).then(snapshot => {
             console.log("file uploaded")
+        }).then(() => {
+            updateUserInfo(imgId)
         })
+    }
 
+    function updateUserInfo(imgId) {
+        const storage = getStorage(app)
+        let imgRef = ref(storage ,storagePath + "avatars/" + imgId);
+        getDownloadURL(imgRef)
+            .then(url => {
+                updateProfile(getAuth().currentUser, {
+                    displayName: name.current.value, 
+                    photoURL: url
+                })
+            })
+            .then(() => {
+                console.log("navigating...")
+                navigate('/')
+            })
+            .catch(err => { console.log(err) })
     }
 
     return (
