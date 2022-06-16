@@ -41,7 +41,6 @@ export default function Post(props) {
                 {props.data.content}
             </div>
             {imgUrl !== "" ? <div className="post-img-wrapper" ref={image}>
-            
                 <LazyLoadImage className="post-img" src={imgUrl} loading="lazy"/>
             </div> : ""}
         </div>
