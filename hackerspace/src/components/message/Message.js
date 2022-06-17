@@ -3,33 +3,68 @@ import { useEffect, useRef, useState } from 'react'
 import { app, db } from '../../firebase.config'
 import { getAuth } from 'firebase/auth'
 import { useNavigate } from 'react-router-dom'
-import { collection, getDocs, query, orderBy, limit, addDoc } from "firebase/firestore"; 
+import { collection, getDocs, query, orderBy, limit, addDoc, doc, onSnapshot } from "firebase/firestore"; 
 import { v4 as uuidv4 } from 'uuid'
 import Navbar from '../common/Navbar'
 import Bubble from './Bubble'
 import './Message.css'
 export default function Message() {
     let navigate = useNavigate()
-
+    if (getAuth().currentUser === null) {
+        navigate('/auth')
+    }
+    
     let messageRef = useRef();
     let chatWrapperRef = useRef();
     let lastMessageRef = useRef();
     let [messages, setMessages] = useState([]);
-    let [loadLimit, setLoadLimit] = useState(20);
-    console.log(messages)
+    let [firstLoad, setFirstLoad] = useState(true);
+    let [loadLimit, setLoadLimit] = useState(10)
+    let [loadStatus, setLoadStatus] = useState({
+        firstLoad: true,
+        scrollBottom: 0,
+        loadLimit: 10,
+        currentHeight: 0
+    })
 
     useEffect(() => {
-        if (getAuth().currentUser === null) {
-            navigate('/auth')
-            return;
-        }
-        renderMessages()
+        const q = query(collection(db, "messages"));
+        const unsubscribe = onSnapshot(q, (querySnapshot) => {
+            renderMessages()
+            setLoadStatus({...loadStatus, scrollBottom: 0})
+        });
+        return unsubscribe
     }, [])
 
-    useEffect(() => {
-        // chatWrapperRef.current.scrollIntoView()
-        lastMessageRef.current.scrollIntoView()
+    function handleScroll() {
+        if (loadStatus.firstLoad) {
+            setLoadStatus({...loadStatus, firstLoad : false})
+        }
+        if (chatWrapperRef.current.scrollTop < 20) {
+            setLoadStatus(prevLoadStatus => {
+                return (
+                    {...loadStatus,
+                        scrollBottom: chatWrapperRef.current.scrollHeight - chatWrapperRef.current.clientHeight - chatWrapperRef.current.scrollTop,
+                        loadLimit: prevLoadStatus.loadLimit + 10,
+                        currentHeight: chatWrapperRef.current.scrollHeight - chatWrapperRef.current.clientHeight
+                    }
+                )
+            })
+        }
+    }
 
+    useEffect(() => {
+        console.log(loadStatus.loadLimit)
+
+        renderMessages()
+    }, [loadStatus])
+
+    useEffect(() => {
+        if (loadStatus.firstLoad) {
+            lastMessageRef.current.scrollIntoView()
+        } else {
+            chatWrapperRef.current.scrollTop = chatWrapperRef.current.scrollHeight - chatWrapperRef.current.clientHeight - loadStatus.scrollBottom
+        }
     }, [messages])
 
     async function handleSendMessage() {
@@ -57,7 +92,7 @@ export default function Message() {
     async function renderMessages() {
         try {
             const ref = collection(db, "messages")
-            let q = query(ref, orderBy("timestamp", "desc"), limit(loadLimit))
+            let q = query(ref, orderBy("timestamp", "desc"), limit(loadStatus.loadLimit))
             const queriedDoc = await getDocs(q)
             let tempMessages = []
             queriedDoc.forEach(doc => {
@@ -75,7 +110,7 @@ export default function Message() {
         <Navbar />
         <div className="chat-wrapper">
             <h1 className="">Message</h1>
-            <div className="chat-content" ref={chatWrapperRef}>
+            <div className="chat-content" ref={chatWrapperRef} onScroll={handleScroll}>
                 {messages.map((message) => {
                     return <Bubble data={message} key={message.id}/>
                 })}
