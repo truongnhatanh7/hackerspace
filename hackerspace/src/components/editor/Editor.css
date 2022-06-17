@@ -14,17 +14,13 @@ body {
     padding: 32px;
     border-radius: 50px;
     border-radius: 18px;
-    background: linear-gradient(225deg, #f3f3f3, #cccccc);
-    box-shadow:  -13px 13px 55px #bababa,
-                13px -13px 55px #ffffff;
+
 }
 
 .editor-content {
     border: none;
     border-radius: 8px;
-    background: transparent;
-    box-shadow:  28px -28px 56px #e3e3e3,
-                -28px 28px 56px #f7f7f7;
+    background-color: rgb(201, 179, 155);
     padding: 12px;
     margin-top: 8px;
     outline: none;

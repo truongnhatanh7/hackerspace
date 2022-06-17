@@ -22,6 +22,10 @@ export default function Editor() {
         }
     }, [])
 
+    useEffect(() => {
+        content.current.focus();
+    }, [])
+
     async function handlePost() {
         try {
             let imgId = uuidv4()
