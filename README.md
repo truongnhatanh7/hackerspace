@@ -7,7 +7,6 @@ I do this project to practice ReactJS during my semester break at school, and fo
 ## Live demo
 [Link](https://hackerspace.netlify.app/auth)
 
-</br>
 #### Profile
 ![Profile](./profile.png)
 #### Feed
