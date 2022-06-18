@@ -5,7 +5,7 @@ Users can register, log in, upload posts with image, auto generated avatar, send
 I do this project to practice ReactJS during my semester break at school, and for entertaining purpose 🤡
 
 ## Live demo
-[Link](https://hackerspace.netlify.app/auth)
+[Link](https://hackerspace.netlify.app)
 
 #### Profile
 ![Profile](./profile.png)
